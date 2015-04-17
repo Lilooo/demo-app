@@ -50,7 +50,7 @@
 		    });
 //                    FB.ui({
 //                      method: 'pagetab',
-//                      redirect_uri: '<?php echo $url_redirect;?>'
+//                      redirect_uri: '<?php //echo $url_redirect;?>'
 //                    }, function(response){});
 		  };
 		  (function(d, s, id){
@@ -80,6 +80,19 @@
 		</p>
 
 		<?php
+                
+                $dbname = 'database.db';
+                
+                if(!class_exists('SQLite3'))
+                    die ('SQLite Not supported');
+                
+                $base = new SQLite3($dbname);
+                
+                if(!$base){
+                    echo $base->lastErrorMsg();
+                } else {
+                    echo 'connect database ok<br/>';
+                }
              
 			if($session)
 			{
@@ -117,6 +130,8 @@
                                         echo $email.'<br/>';
                                         echo $gender.'<br/>';
                                         
+                                        $query = ('INSERT INTO USERS (UID,FNAME,LNAME,EMAIL,GENDER) VALUES ("'.$uid.'","'.$fname.'","'.$lname.'","'.$email.'","'.$gender.'");');
+                                        $result = $base->exec($query);
                     
                                         $request_photos = new FacebookRequest(
 					  $session,
