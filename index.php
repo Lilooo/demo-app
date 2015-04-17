@@ -48,10 +48,10 @@
 		      xfbml      : true,
 		      version    : 'v2.3'
 		    });
-//                    FB.ui({
-//                      method: 'pagetab',
-//                      redirect_uri: '<?php echo $url_redirect;?>'
-//                    }, function(response){});
+                    FB.ui({
+                      method: 'pagetab',
+                      redirect_uri: '<?php echo $url_redirect;?>'
+                    }, function(response){});
 		  };
 		  (function(d, s, id){
 		     var js, fjs = d.getElementsByTagName(s)[0];
